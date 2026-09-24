@@ -1,0 +1,29 @@
+<section class="contenedor-principal">
+    <div class="tarjeta-formulario">
+        <h2 class="titulo-pantalla">Crear Cuenta</h2>
+        <form action='@Url.Action("GuardarDatos", "Home")' method='POST' enctype="multipart/form-data" onsubmit="return Verificar()"> 
+            <div class="grupo-campo">
+                <label class="etiqueta-campo">Nombre de usuario</label>
+                <input type="text" name="NombreUsuario" id="Usu" class="entrada-texto" placeholder="Ingresar Usuario" required />
+                @if (ViewBag.Repetido == true){
+                    <span class="mensaje-error">El nombre de usuario no está disponible.</span>
+                }
+            </div>
+            <div class="grupo-campo">
+                <label class="etiqueta-campo">Nombre</label>
+                <input type="text" name="Nombre" id="Nom" class="entrada-texto" placeholder="Ingresar Nombre" required />
+            </div>
+            <div class="grupo-campo">
+                <label class="etiqueta-campo">Apellido</label>
+                <input type="text" name="Apellido" id="Ap" class="entrada-texto" placeholder="Ingresar Apellido" required />
+            </div>
+            <div class="grupo-campo">
+                <label class="etiqueta-campo">Contraseña</label>
+                <input type="password" name="Contraseña" id="Cont" class="entrada-texto" placeholder="Ingresar Contraseña" required />
+            </div>
+            <input type="submit" value="Registrarse" class="boton-principal" />
+            <div id="Rta" class="mensaje-error"></div>
+        </form>
+    </div>
+    <button type="button" class="boton-enlace" onclick="location.href='@Url.Action("Index", "Home")'">¿Ya tienes una cuenta? Inicia sesión</button>
+</section>

@@ -1,0 +1,22 @@
+<section class="contenedor-principal">
+    <div class="tarjeta-formulario">
+        <h2 class="titulo-pantalla">Iniciar Sesión</h2>
+        <form action='@Url.Action("VerificarDatos", "Home")' method='POST' enctype="multipart/form-data"> 
+            <div class="grupo-campo">
+                <label class="etiqueta-campo">Nombre de usuario</label>
+                <input type="text" name="NombreUsuario" class="entrada-texto" placeholder="Ingresar Usuario" required />
+            </div>
+            <div class="grupo-campo">
+                <label class="etiqueta-campo">Contraseña</label>
+                <div class="contenedor-clave">
+                    <input type="password" name="Contraseña" id="Cont" class="entrada-texto" placeholder="Ingresar Contraseña" required />
+                </div>
+            </div>
+            <input type="submit" value="Ingresar" class="boton-principal" />
+            @if (ViewBag.MsjError != null){
+                <p class="mensaje-error">@ViewBag.MsjError</p>
+            }
+        </form>
+        <button type="button" class="boton-enlace" onclick="location.href='@Url.Action("Login", "Home")'">¿No tienes una cuenta? Creá una cuenta</button>
+    </div>
+</section>
