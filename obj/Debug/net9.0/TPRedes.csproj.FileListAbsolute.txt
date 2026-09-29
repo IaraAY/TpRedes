@@ -140,3 +140,4 @@ Z:\2026\Programación\TPRedes\obj\Debug\net9.0\TPRedes.genruntimeconfig.cache
 Z:\2026\Programación\TPRedes\obj\Debug\net9.0\ref\TPRedes.dll
 Z:\2026\Programación\TPRedes\obj\Debug\net9.0\compressed\rx4h7opnbo-jbcrb6x06z.gz
 Z:\2026\Programación\TPRedes\obj\Debug\net9.0\compressed\4aoont483z-5t6zy1dhq8.gz
+Z:\2026\Programación\TPRedes\obj\Debug\net9.0\TPRedes.sourcelink.json

@@ -1,0 +1,27 @@
+<!-- Hacer un form que mande las respuestas a CrearPublicacion en Home controler que reciba: una imagen, un texto de titulo, un texto de descripcion y hacer 2 hidden para que el formulario devuelva como fecha y hora la actual y el usuario actual registrado en session-->
+<form action="@Url.Action("CrearPublicacion", "Home")" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        Imagen:
+        <input type="file" class="form-control" id="imagen" name="foto" required>
+    </div>
+    <div class="form-group">
+        Título:
+        <input type="text" class="form-control" id="titulo" name="Titulo" required>
+    </div>
+    <div class="form-group">
+        Descripción:
+        <input type="text" class="form-control" id="descripcion" name="Descripcion" rows="3" required>
+    </div>
+    <input type="hidden" name="FechaPublicacion" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")">
+    <input type="hidden" name="IdUsuario" value="@ViewBag.Usuario.Id">
+    <button type="submit" class="btn btn-primary">Crear Publicación</button>
+</form>
+<!-- Agregá un boton de volver a la red, que te lleve a la view de red -->
+<a href="@Url.Action("Red", "Home")" class="btn btn-secondary">Volver a la Red</a>
+<!-- Si ViewBag.MensajeError no es null, mostrar un mensaje de error en un div con clase alert alert-danger -->
+@if (ViewBag.MensajeError != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.MensajeError
+    </div>
+}
