@@ -1,313 +1,193 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
-
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
-}
-
-/* ==========================================================================
-   1. ESTRUCTURA GLOBAL Y CENTRADO DE PÁGINA
-   ========================================================================== */
 * {
   box-sizing: border-box;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background-color: #fdfbf7; /* Crema cálido */
-  color: #27272a;            /* Grafito oscuro */
-  margin-bottom: 60px;       /* Espacio para el footer fijo */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fafafa;
+  color: #262626;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* El contenedor principal de Bootstrap ocupa el espacio restante para centrar verticalmente */
-body > .container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-main[role="main"] {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ==========================================================================
-   2. NAVBAR Y HEADER (ESTILOS SOBREESCRICTOS Y COMBINADOS)
-   ========================================================================== */
-header .navbar {
-  background-color: #ffffff !important;
-  border-bottom: 1px solid #e4e4e7 !important;
-}
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-  color: #d97706 !important; /* Ámbar cálido para la marca */
-  font-weight: 700;
-}
-
-.nav-link {
-  color: #27272a !important;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.nav-link:hover {
-  color: #d97706 !important;
 }
 
 a {
-  color: #d97706;
+  color: #0095f6;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 a:hover {
-  color: #b45309;
+  opacity: 0.7;
 }
 
-/* ==========================================================================
-   3. FORMULARIO CENTRADO Y TARJETA
-   ========================================================================== */
+header .navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #dbdbdb !important;
+  padding: 12px 16px;
+}
+
+a.navbar-brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #262626 !important;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  color: #262626 !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
 .contenedor-principal {
   width: 100%;
-  max-width: 460px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 16px;
 }
 
 .tarjeta-formulario {
   background-color: #ffffff;
-  width: 100%;
-  padding: 8%;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px -10px rgba(39, 39, 42, 0.08);
-  border: 1px solid #e4e4e7;
+  border: 1px solid #dbdbdb;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 .titulo-pantalla {
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #27272a;
-  margin-bottom: 6%;
   text-align: center;
+  margin-bottom: 24px;
+  color: #262626;
 }
 
-/* ==========================================================================
-   4. CAMPOS DE ENTRADA (INPUTS)
-   ========================================================================== */
 .grupo-campo {
-  margin-bottom: 5%;
-  width: 100%;
+  margin-bottom: 16px;
 }
 
 .etiqueta-campo {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #27272a;
-  margin-bottom: 2%;
+  color: #737373;
+  margin-bottom: 6px;
 }
 
-.entrada-texto {
+.entrada-texto, .form-control {
   width: 100%;
-  padding: 3.5%;
-  border: 1px solid #e4e4e7;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  padding: 10px 12px;
   background-color: #fafafa;
-  color: #27272a;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #262626;
+  transition: all 0.2s ease;
 }
 
-.entrada-texto:focus {
-  outline: none;
-  border-color: #d97706;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+.entrada-texto:focus, .form-control:focus {
   background-color: #ffffff;
+  border-color: #a8a8a8;
+  box-shadow: none;
+  outline: none;
 }
 
-.contenedor-clave {
-  position: relative;
-  display: flex;
-  width: 100%;
-}
-
-.contenedor-clave .entrada-texto {
-  padding-right: 15%;
-}
-
-.boton-ojo {
-  position: absolute;
-  right: 2%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-  padding: 2%;
-}
-
-/* ==========================================================================
-   5. BOTONES Y ACCIONES
-   ========================================================================== */
 .boton-principal, .btn-primary {
   width: 100%;
-  padding: 4%;
-  background-color: #d97706 !important;
-  border-color: #d97706 !important;
-  color: #ffffff !important;
+  padding: 10px;
+  background-color: #c701da !important;
+  border: none !important;
   border-radius: 8px;
+  color: #ffffff !important;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .boton-principal:hover, .btn-primary:hover {
-  background-color: #b45309 !important;
-  border-color: #b45309 !important;
+  background-color: #d320d3 !important;
 }
 
-.boton-peligro {
+.boton-enlace, .btn-secondary {
+  display: block;
   width: 100%;
-  padding: 4%;
-  background-color: #e11d48;
-  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 12px;
+  background-color: #efefef;
+  color: #262626;
   border: none;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.88rem;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.boton-peligro:hover {
-  background-color: #be123c;
+#feedPublicaciones {
+  max-width: 470px;
+  margin: 0 auto;
 }
 
-.boton-enlace {
+#feedPublicaciones .card {
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+#feedPublicaciones .card img {
   width: 100%;
-  margin-top: 5%;
-  padding: 3.5%;
-  background-color: #f4f4f5;
-  color: #27272a;
-  border: 1px solid #e4e4e7;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
-  text-align: center;
+  max-height: 500px;
+  object-fit: contain;
+  background-color: #000;
+  display: block;
+  margin: 0 auto;
 }
 
-.boton-enlace:hover {
-  background-color: #e4e4e7;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #d97706;
-  border-color: #b45309;
-}
-
-/* ==========================================================================
-   6. MENSAJES Y CAJAS DE INFORMACIÓN
-   ========================================================================== */
-.mensaje-error {
-  color: #e11d48;
-  font-size: 0.85rem;
-  margin-top: 2%;
-  font-weight: 600;
-}
-
-.caja-usuario {
+.comentarios-box {
   background-color: #fafafa;
-  border: 1px solid #e4e4e7;
   border-radius: 8px;
-  padding: 5%;
-  margin-bottom: 6%;
+  padding: 10px 12px;
 }
 
-.caja-usuario p {
-  margin-bottom: 3%;
-  font-size: 0.95rem;
-  color: #27272a;
+.comentario-item {
+  font-size: 0.88rem;
+  padding: 3px 0;
 }
 
-/* ==========================================================================
-   7. FOOTER Y BORDES GENERALES DE BOOTSTRAP
-   ========================================================================== */
-.border-top {
-  border-top: 1px solid #e4e4e7 !important;
+.comentario-item strong {
+  color: #262626;
+  margin-right: 6px;
 }
 
-.border-bottom {
-  border-bottom: 1px solid #e4e4e7 !important;
+.comentario-item small {
+  color: #8e8e8e;
+  font-size: 0.75rem;
+  display: block;
 }
 
-.box-shadow {
-  box-shadow: 0 4px 12px rgba(39, 39, 42, 0.03) !important;
-}
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.mensaje-error {
+  color: #ed4956;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  margin-top: auto;
+  padding: 20px 0;
   background-color: #ffffff;
-  color: #71717a !important;
-}
-
-.footer a {
-  color: #d97706;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
+  border-top: 1px solid #dbdbdb;
+  text-align: center;
+  color: #8e8e8e;
+  font-size: 0.85rem;
 }

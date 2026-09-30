@@ -7,16 +7,18 @@ namespace TPRedes.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IWebHostEnvironment _env;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment env)
     {
         _logger = logger;
+        _env = env;
     }
 
     public IActionResult Index()
     {
         BD MiBd = new BD();
-        string usuario = HttpContext.Session.GetString("NombreUsuario");   //Verifica que esta iniciada la sesion
+        string usuario = HttpContext.Session.GetString("NombreUsuario");
         if (usuario != null)
         {
             ViewBag.Usuario = MiBd.DevUsuario(usuario);
@@ -80,7 +82,7 @@ public class HomeController : Controller
     public IActionResult Bienvenida()
     {
         BD MiBd = new BD();
-        string usuario = HttpContext.Session.GetString("NombreUsuario");   //Verifica que esta iniciada la sesion
+        string usuario = HttpContext.Session.GetString("NombreUsuario");
         if (usuario != null)
         {
             ViewBag.Usuario = MiBd.DevUsuario(usuario);
@@ -115,40 +117,48 @@ public class HomeController : Controller
         return View();
     }
 
-[HttpPost]
-public IActionResult CrearPublicacion(Publicacion publicacion, IFormFile foto)
-{
-    BD MiBd = new BD();
-    string usuario = HttpContext.Session.GetString("NombreUsuario");
-    if (usuario == null)
+    [HttpPost]
+    public IActionResult CrearPublicacion(Publicacion publicacion, IFormFile archivo)
     {
-        return View("IniciarSesion");
-    }
-
-    ViewBag.Usuario = MiBd.DevUsuario(usuario);
-
-    if (foto != null && foto.Length > 0)
-    {
-        string ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", foto.FileName);
-
-        using (var stream = new FileStream(ruta, FileMode.Create))
+        BD MiBd = new BD();
+        string usuario = HttpContext.Session.GetString("NombreUsuario");
+        if (usuario == null)
         {
-            foto.CopyTo(stream);
+            return View("IniciarSesion");
         }
 
-        publicacion.Imagen = foto.FileName;
-    }
+        ViewBag.Usuario = MiBd.DevUsuario(usuario);
 
-    if (MiBd.CargarPublicacion(publicacion))
-    {
-        return RedirectToAction("Red");
+        if (archivo != null && archivo.Length > 0)
+        {
+            string nombreArchivo = archivo.FileName;
+            string rutaCarpeta = Path.Combine(_env.WebRootPath, "images");
+
+            if (!Directory.Exists(rutaCarpeta))
+            {
+                Directory.CreateDirectory(rutaCarpeta);
+            }
+
+            string rutaCompleta = Path.Combine(rutaCarpeta, nombreArchivo);
+
+            using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+            {
+                archivo.CopyTo(stream);
+            }
+
+            publicacion.Imagen = nombreArchivo;
+        }
+
+        if (MiBd.CargarPublicacion(publicacion))
+        {
+            return RedirectToAction("Red");
+        }
+        else
+        {
+            ViewBag.Error = "Error al crear la publicación. Por favor, inténtelo de nuevo.";
+            return View("CrearPublicacion");
+        }
     }
-    else
-    {
-        ViewBag.MensajeError = "Error al crear la publicación. Por favor, inténtelo de nuevo.";
-        return View("CrearPublicacion");
-    }
-}
 
     [HttpGet]
     public IActionResult GetPublicaciones(int offset = 0, int limit = 10)

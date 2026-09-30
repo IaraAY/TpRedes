@@ -16,7 +16,6 @@ public class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            // CORREGIDO: @NombreUsuario coincide exactamente con la propiedad del objeto Usuario
             string query = @"INSERT INTO Usuarios (NombreUsuario, Contraseña, Nombre, Apellido) 
                              VALUES (@NombreUsuario, @Contraseña, @Nombre, @Apellido)";
             connection.Execute(query, usuario);
